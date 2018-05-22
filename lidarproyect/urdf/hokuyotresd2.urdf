@@ -1,0 +1,333 @@
+<robot
+  name="lidarproyect">
+  <link
+    name="point_cloud">
+    <inertial>
+      <origin
+        xyz="-3.46944695195361E-18 -1.04083408558608E-17 0.00299999999999997"
+        rpy="0 0 0" />
+      <mass
+        value="0.000900000000000001" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/odom.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/odom.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="2.65744117392691E-06 -0.00574956947789556 0.0438059662112648"
+        rpy="0 0 0" />
+      <mass
+        value="0.607449074774275" />
+      <inertia
+        ixx="0.00246659690857758"
+        ixy="1.33794700042527E-07"
+        ixz="-2.50114018094108E-08"
+        iyy="0.000665925453886521"
+        iyz="1.98094620119954E-05"
+        izz="0.00185828606888705" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="base_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0"
+      rpy="0 0 0" />
+    <parent
+      link="point_cloud" />
+    <child
+      link="base_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="basefootprint_link">
+    <inertial>
+      <origin
+        xyz="-0.000790286815942499 -0.0253038027589208 -6.60483057135508E-10"
+        rpy="0 0 0" />
+      <mass
+        value="0.0191238781580437" />
+      <inertia
+        ixx="7.87682319144907E-05"
+        ixy="-1.21490722807687E-09"
+        ixz="8.57898685901679E-16"
+        iyy="2.71910667678979E-11"
+        iyz="1.42532177166651E-12"
+        izz="7.87682591055574E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/basefootprint_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.752941176470588 0.752941176470588 0.752941176470588 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/basefootprint_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="basefootprint_joint"
+    type="continuous">
+    <origin
+      xyz="0.000822896120312387 -0.000380992435477512 0.0710337331592538"
+      rpy="-1.38355013240819E-14 -0.0409702778916442 4.09303726047228E-15" />
+    <parent
+      link="base_link" />
+    <child
+      link="basefootprint_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="lidarbase_link">
+    <inertial>
+      <origin
+        xyz="-1.73472347597681E-18 0 0.00914563543043143"
+        rpy="0 0 0" />
+      <mass
+        value="0.0616993449362789" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/lidarbase_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/lidarbase_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="lidarbase_joint"
+    type="fixed">
+    <origin
+      xyz="-0.000823587245446634 0 0"
+      rpy="1.20979598697061E-14 -0.0111812003143721 -6.82242770739922E-15" />
+    <parent
+      link="basefootprint_link" />
+    <child
+      link="lidarbase_link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="laser">
+    <inertial>
+      <origin
+        xyz="-0.000121012357977957 1.23592808066696E-05 -0.0293214813330345"
+        rpy="0 0 0" />
+      <mass
+        value="0.142947282569696" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/lidar_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.196078431372549 0.196078431372549 0.196078431372549 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/lidar_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="laser_joint"
+    type="fixed">
+    <origin
+      xyz="0.000800000000000042 0.0008 0.0825"
+      rpy="-1.38050658413677E-30 -6.93889390390723E-18 2.95822839457879E-31" />
+    <parent
+      link="lidarbase_link" />
+    <child
+      link="laser" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="motor_link">
+    <inertial>
+      <origin
+        xyz="-0.0106344277675477 -0.0094247807316442 0.00600021268987943"
+        rpy="0 0 0" />
+      <mass
+        value="0.00715036184985687" />
+      <inertia
+        ixx="0"
+        ixy="0"
+        ixz="0"
+        iyy="0"
+        iyz="0"
+        izz="0" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/motor_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://lidarproyect/meshes/motor_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="motor_joint"
+    type="fixed">
+    <origin
+      xyz="-0.00600000000000235 -0.116680992435477 0.0647999999999999"
+      rpy="0 1.5707963267949 0" />
+    <parent
+      link="point_cloud" />
+    <child
+      link="motor_link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+<!-- sensor -->
+<sensor name="head_hokuyo_sensor" type="ray">
+      <pose>0.025 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <update_rate>40</update_rate>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>720</samples>
+            <resolution>0,24</resolution>
+            <min_angle>-1.570796</min_angle>
+            <max_angle>1.570796</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.10</min>
+          <max>10.0</max>
+          <resolution>0.001</resolution>
+        </range>
+      </ray>
+      <plugin filename="libgazebo_ros_laser.so" name="gazebo_ros_head_hokuyo_controller">
+        <topicName>/scan</topicName>
+        <frameName>laser</frameName>
+      </plugin>
+    </sensor>
+</robot>

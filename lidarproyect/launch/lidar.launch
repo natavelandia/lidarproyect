@@ -1,0 +1,56 @@
+<launch>
+
+<!-- Start driver with the port ttyACM0 -->
+ <node name="hokuyo" pkg="urg_node" type="urg_node">
+ <param name="port" type="string" value="/dev/ttyACM0" />
+ </node>
+
+<!-- Configuration to see the model--> 
+ <arg name="model" />
+ <arg name="gui" default="True" />
+ <param name="robot_description" textfile="$(find lidarproyect)/urdf/hokuyotresd2.urdf"/>
+ <param name="use_gui" value="$(arg gui)" />
+ 
+ <node name="joint_state_publisher"
+    pkg="joint_state_publisher"
+    type="joint_state_publisher" />
+
+ <node
+    name="robot_state_publisher"
+    pkg="robot_state_publisher"
+    type="state_publisher" />
+
+ <node
+    name="rviz"
+    pkg="rviz"
+    type="rviz"
+    args="-d $(find lidarproyect)/urdf.rviz" />
+
+
+
+<!--Start Laser Assembler -->
+
+ <node type="laser_scan_assembler" pkg="laser_assembler"
+        name="my_assembler">
+    <remap from="scan" to="/scan"/>
+    <param name="max_scans" type="int" value="400" />
+    <param name="fixed_frame" type="string" value="point_cloud" />
+  </node>
+<!-- Service Client to call Laser Assembler -->
+  
+ <node 
+    pkg="lidarproyect" 
+    type="call_assembler.py" 
+    name="test_client" output="screen">
+ </node>
+
+<!-- Nuevo, rbp y publish tf -->
+ <node 
+    pkg="lidarproyect" 
+    type="state_publisher.py" 
+    name="state_publisher">
+ </node>
+
+
+
+</launch>
